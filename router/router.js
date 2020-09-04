@@ -102,7 +102,7 @@ router.post('/add-author', async (req, res) => {
       { authorFirst, authorLast },
       { state, suburb, street, unit }
     );
-    res.redirect('/books');
+    res.redirect('/authors');
   } catch (e) {
     res.render('error.ejs', { path: '/error', message: e.message });
   }

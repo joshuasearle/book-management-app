@@ -13,6 +13,9 @@ app.set('view engine', 'html');
 // Add post request url decoding
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Add static assets
+app.use(express.static('public'));
+
 // Send requests to router
 app.use('/', router);
 

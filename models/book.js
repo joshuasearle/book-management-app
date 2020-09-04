@@ -24,6 +24,7 @@ const bookSchema = mongoose.Schema({
       message: 'Author name must be between 5 and 15 characters.',
     },
   },
+  authorId: { type: mongoose.Schema.Types.ObjectId, required: true },
   created: {
     type: Date,
     default: Date.now,

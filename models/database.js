@@ -2,13 +2,18 @@ const mongoose = require('mongoose');
 const Book = require('./book-model');
 const Author = require('./author-model');
 
-const findBooks = () => Book.find();
+const findBooks = () => Book.find().populate('author');
 
 const findBookById = async id => {
-  const books = await Book.findById(id);
+  const book = await Book.findById(id).populate('author');
+  if (!book) throw new Error('Database error.');
+  return book;
+};
 
-  if (books.length === 0) throw new Error('Database error.');
-  return books[0];
+const findAuthorById = async id => {
+  const author = await Author.findById(id);
+  if (!author) throw new Error('Database error.');
+  return author;
 };
 
 const addBook = async (title, author, isbn, created, summary) => {
@@ -36,4 +41,4 @@ const addBook = async (title, author, isbn, created, summary) => {
   return saveResult;
 };
 
-module.exports = { findBooks, addBook, findBookById };
+module.exports = { findBooks, addBook, findBookById, findAuthorById };

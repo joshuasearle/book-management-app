@@ -108,6 +108,11 @@ router.post('/add-author', async (req, res) => {
   }
 });
 
+router.get('/authors', async (req, res) => {
+  const authors = await database.getAuthors();
+  res.render('authors.ejs', { path: '/authors', authors: authors });
+});
+
 router.use('/', (req, res) => res.render('404.ejs', { path: '/404' }));
 
 module.exports = router;

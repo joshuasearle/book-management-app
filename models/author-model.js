@@ -30,6 +30,7 @@ const authorSchema = mongoose.Schema({
   },
   numBooks: {
     type: Number,
+    default: 0,
     validate: {
       validator: numBooks => numBooks > 0,
       message: 'Author needs at least one book.',

@@ -16,6 +16,7 @@ router.get('/add-book', (req, res) => {
 
 router.post('/add-book', async (req, res) => {
   const { title, isbn, created, summary, authorFirst, authorLast } = req.body;
+  console.log(created);
   try {
     await database.addBook(
       title,

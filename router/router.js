@@ -113,6 +113,21 @@ router.get('/authors', async (req, res) => {
   res.render('authors.ejs', { path: '/authors', authors: authors });
 });
 
+router.get('/update-author', (req, res) => {
+  res.render('update-author.ejs', { path: '/update.author' });
+});
+
+router.post('/update-author', async (req, res) => {
+  const { id, numBook } = req.body;
+  console.log(id, numBook);
+  try {
+    await database.updateAuthor(id, numBook);
+    res.redirect('/authors');
+  } catch (e) {
+    res.render('error.ejs', { path: '/error', message: e.message });
+  }
+});
+
 router.use('/', (req, res) => res.render('404.ejs', { path: '/404' }));
 
 module.exports = router;

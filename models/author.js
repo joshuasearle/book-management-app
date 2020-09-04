@@ -36,3 +36,5 @@ const authorSchema = mongoose.Schema({
     },
   },
 });
+
+module.exports = mongoose.Model('Author', authorSchema);

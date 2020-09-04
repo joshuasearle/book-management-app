@@ -16,12 +16,16 @@ const findAuthorById = async id => {
   return author;
 };
 
+const findAuthorByName = async (first, last) => {
+  return await Author.where({
+    'name.firstName': first,
+    'name.lastName': last,
+  });
+};
+
 const addBook = async (title, author, isbn, created, summary) => {
   // Get authors with same name
-  const authors = await Author.where({
-    'name.firstName': author.first,
-    'name.lastName': author.last,
-  });
+  const authors = await findAuthorByName(author.first, author.last);
 
   if (authors.length === 0) throw new Error('Author does not exist.');
 
@@ -42,4 +46,31 @@ const addBook = async (title, author, isbn, created, summary) => {
   return saveResult;
 };
 
-module.exports = { findBooks, addBook, findBookById, findAuthorById };
+const updateBook = async (id, title, author, created, summary) => {
+  const authors = await findAuthorByName(author.first, author.last);
+  if (authors.length === 0) throw new Error('Author does not exist.');
+
+  // Create book fields
+  const bookFields = {
+    title: title,
+    author: authors[0]._id,
+  };
+
+  if (created) bookFields.created = created;
+  if (summary) bookFields.summary = summary;
+
+  return await Book.updateOne({ _id: id }, { $set: { ...bookFields } });
+};
+
+const removeBookByIsbn = async isbn => {
+  return await Book.deleteMany({ isbn: isbn });
+};
+
+module.exports = {
+  findBooks,
+  addBook,
+  findBookById,
+  findAuthorById,
+  updateBook,
+  removeBookByIsbn,
+};

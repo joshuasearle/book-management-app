@@ -29,11 +29,12 @@ const addBook = async (title, author, isbn, created, summary) => {
   const bookFields = {
     _id: new mongoose.Types.ObjectId(),
     title: title,
-    authorId: authors[0]._id,
+    author: authors[0]._id,
   };
+
   if (isbn) bookFields.isbn = isbn;
   if (created) bookFields.created = created;
-  if (summary) bookFields.summary = created;
+  if (summary) bookFields.summary = summary;
 
   // Create book and save
   const newBook = new Book(bookFields);

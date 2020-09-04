@@ -101,6 +101,10 @@ const addAuthor = async (name, address) => {
   return await author.save();
 };
 
+const getAuthors = async () => {
+  return await Author.find();
+};
+
 module.exports = {
   findBooks,
   addBook,
@@ -110,4 +114,5 @@ module.exports = {
   removeBookByIsbn,
   searchIsbnAuthor,
   addAuthor,
+  getAuthors,
 };

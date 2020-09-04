@@ -17,13 +17,13 @@ router.get('/add-book', (req, res) => {
 router.post('/add-book', async (req, res) => {
   const { title, isbn, created, summary, authorFirst, authorLast } = req.body;
   try {
-    await database.addBook(title, {
-      first: authorFirst,
-      last: authorLast,
+    await database.addBook(
+      title,
+      { first: authorFirst, last: authorLast },
       isbn,
       created,
-      summary,
-    });
+      summary
+    );
     res.redirect('/books');
   } catch (e) {
     res.render('error.ejs', { path: '/error', message: e.message });

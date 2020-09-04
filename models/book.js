@@ -21,7 +21,7 @@ const bookSchema = mongoose.Schema({
     type: String,
     validate: {
       validator: author => author.length >= 5 && author <= 15,
-      message: 'Author must be between 5 and 15 characters.',
+      message: 'Author name must be between 5 and 15 characters.',
     },
   },
   created: {

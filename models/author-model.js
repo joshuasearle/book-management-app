@@ -25,8 +25,8 @@ const authorSchema = mongoose.Schema({
       },
     },
     suburb: String,
-    Street: String,
-    Unit: Number,
+    street: String,
+    unit: Number,
   },
   numBooks: {
     type: Number,

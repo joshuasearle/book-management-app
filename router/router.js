@@ -39,7 +39,6 @@ router.get('/update-book/:id', async (req, res) => {
   const id = req.params.id;
   try {
     const book = await database.findBookById(id);
-    console.log(book);
     res.render('single-book-update.ejs', {
       path: '/update-book',
       book: {
@@ -83,7 +82,6 @@ router.get('/search-book', (req, res) => {
 
 router.post('/search-book', async (req, res) => {
   const { isbn, authorFirst, authorLast } = req.body;
-  console.log(req.body);
   const books = await database.searchIsbnAuthor(isbn, {
     firstName: authorFirst,
     lastName: authorLast,
@@ -119,7 +117,6 @@ router.get('/update-author', (req, res) => {
 
 router.post('/update-author', async (req, res) => {
   const { id, numBook } = req.body;
-  console.log(id, numBook);
   try {
     await database.updateAuthor(id, numBook);
     res.redirect('/authors');

@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
-const Book = require('./models/book');
 
 const router = require('./router/router');
 
@@ -22,7 +21,7 @@ app.use(express.static('public'));
 app.use('/', router);
 
 // Connect to Db, and start server
-const url = 'mongodb://localhost:27017/fit2095db';
+const url = 'mongodb://localhost:27017/fit2095';
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 

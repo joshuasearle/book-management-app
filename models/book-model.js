@@ -23,6 +23,24 @@ const bookSchema = mongoose.Schema({
     required: true,
     ref: 'Author',
   },
+  authorName: {
+    firstName: {
+      type: String,
+      required: true,
+      validate: {
+        validator: firstName => firstName.length >= 5 && firstName.length <= 15,
+        message: 'First name cannot be empty',
+      },
+    },
+    lastName: {
+      type: String,
+      validate: {
+        validator: lastName => lastName.length >= 5 && lastName.length <= 15,
+        message: 'Last Name cannot be empty',
+        required: true,
+      },
+    },
+  },
   created: {
     type: Date,
     default: Date.now,

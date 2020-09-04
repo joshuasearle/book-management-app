@@ -34,6 +34,7 @@ const addBook = async (title, author, isbn, created, summary) => {
     _id: new mongoose.Types.ObjectId(),
     title: title,
     author: authors[0]._id,
+    authorName: { firstName: author.first, lastName: author.last },
   };
 
   if (isbn) bookFields.isbn = isbn;
@@ -54,6 +55,10 @@ const updateBook = async (id, title, author, created, summary) => {
   const bookFields = {
     title: title,
     author: authors[0]._id,
+    authorName: {
+      firstName: author.first,
+      lastName: author.last,
+    },
   };
 
   if (created) bookFields.created = created;

@@ -66,6 +66,18 @@ const removeBookByIsbn = async isbn => {
   return await Book.deleteMany({ isbn: isbn });
 };
 
+const searchIsbnAuthor = async (isbn, author) => {
+  const books = await Book.find().populate('author');
+  return books.filter(book => {
+    console.log(book.author.name, author);
+    return (
+      book.isbn === String(isbn) ||
+      (book.author.name.firstName === author.firstName &&
+        book.author.name.lastName === author.lastName)
+    );
+  });
+};
+
 module.exports = {
   findBooks,
   addBook,
@@ -73,4 +85,5 @@ module.exports = {
   findAuthorById,
   updateBook,
   removeBookByIsbn,
+  searchIsbnAuthor,
 };

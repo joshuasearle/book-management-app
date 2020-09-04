@@ -13,6 +13,10 @@ router.get('/books', (req, res) => {
   });
 });
 
+router.get('/add-book', (req, res) => {
+  res.render('add-book.ejs', { path: '/add-book' });
+});
+
 router.use('/', (req, res) => res.render('404.ejs', { path: '/404' }));
 
 module.exports = router;

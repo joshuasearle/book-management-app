@@ -19,7 +19,7 @@
         <% for ({title, author, isbn, date, summary} of books) { %>
         <tr>
           <td><%= title %></td>
-          <td><%= author %></td>
+          <td><%= author.name.firstName %> <%= author.name.lastName %></td>
           <td><%= isbn %></td>
           <td><%= date %></td>
           <td><%= summary %></td>

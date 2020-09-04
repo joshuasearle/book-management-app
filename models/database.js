@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Book = require('./book-model');
 const Author = require('./author-model');
 
-const findBooks = () => Book.find().populate('author');
+const findBooks = () => Book.find();
 
 const findBookById = async id => {
-  const book = await Book.findById(id).populate('author');
+  const book = await Book.findById(id);
   if (!book) throw new Error('Database error.');
   return book;
 };
@@ -72,14 +72,14 @@ const removeBookByIsbn = async isbn => {
 };
 
 const searchIsbnAuthor = async (isbn, author) => {
-  const books = await Book.find().populate('author');
-  return books.filter(book => {
-    console.log(book.author.name, author);
-    return (
-      book.isbn === String(isbn) ||
-      (book.author.name.firstName === author.firstName &&
-        book.author.name.lastName === author.lastName)
-    );
+  return await Book.where({
+    $or: [
+      { isbn: isbn },
+      {
+        'authorName.firstName': author.firstName,
+        'authorName.lastName': author.lastName,
+      },
+    ],
   });
 };
 

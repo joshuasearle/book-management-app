@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Author = require('./author');
 
 const bookSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -15,13 +16,6 @@ const bookSchema = mongoose.Schema({
     validate: {
       validator: isbn => isbn.length === 13,
       message: 'ISBN must be 13 characters',
-    },
-  },
-  author: {
-    type: String,
-    validate: {
-      validator: author => author.length >= 5 && author <= 15,
-      message: 'Author name must be between 5 and 15 characters.',
     },
   },
   authorId: { type: mongoose.Schema.Types.ObjectId, required: true },

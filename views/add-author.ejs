@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./shared/head') %>
+  <body>
+    <%- include('./shared/navbar') %>
+    <main class="container">
+      <h1>Add a new Author</h1>
+      <form class="add-form" method="POST" action="/add-author">
+        <div class="form-item">
+          <label for="authorFirst">Author First Name</label>
+          <input type="text" name="authorFirst" id="authorFirst" />
+        </div>
+        <div class="form-item">
+          <label for="authorLast">Author Last Name</label>
+          <input type="text" name="authorLast" id="authorLast" />
+        </div>
+        <div class="form-item">
+          <label for="state">State</label>
+          <input type="text" name="state" id="state" />
+        </div>
+        <div class="form-item">
+          <label for="suburb">Suburb</label>
+          <input type="text" name="suburb" id="suburb" />
+        </div>
+        <div class="form-item">
+          <label for="street">Street</label>
+          <input type="text" name="street" id="street" />
+        </div>
+        <div class="form-item">
+          <label for="unit">Unit</label>
+          <input type="text" name="unit" id="unit" />
+        </div>
+        <div class="form-item">
+          <button class="submit" type="submit">Add Author</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

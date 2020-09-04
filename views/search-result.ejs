@@ -11,8 +11,9 @@
       <ul>
         <% for (book of books) { %>
         <li>
-          Title: <%= book.title %>, ISBN: <%= book.isbn %>, Author: <%= book.author %>, Date: <%=
-          book.date %>, Summary: <%= book.summary %>
+          Title: <%= book.title %>, ISBN: <%= book.isbn %>, Author: <%=
+          book.author.name.firstName %> <%= book.author.name.lastName %>, Date:
+          <%= book.date %>, Summary: <%= book.summary %>
         </li>
         <% } %>
       </ul>

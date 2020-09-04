@@ -75,6 +75,20 @@ router.post('/remove-book', async (req, res) => {
   res.redirect('/books');
 });
 
+router.get('/search-book', (req, res) => {
+  res.render('search.ejs', { path: '/search-book' });
+});
+
+router.post('/search-book', async (req, res) => {
+  const { isbn, authorFirst, authorLast } = req.body;
+  console.log(req.body);
+  const books = await database.searchIsbnAuthor(isbn, {
+    firstName: authorFirst,
+    lastName: authorLast,
+  });
+  res.render('search-result.ejs', { path: '/search-book', books: books });
+});
+
 router.use('/', (req, res) => res.render('404.ejs', { path: '/404' }));
 
 module.exports = router;

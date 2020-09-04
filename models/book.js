@@ -18,8 +18,11 @@ const bookSchema = mongoose.Schema({
     },
   },
   author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Author',
+    type: String,
+    validate: {
+      validator: author => author.length >= 5 && author <= 15,
+      message: 'Author must be between 5 and 15 characters.',
+    },
   },
   created: {
     type: Date,

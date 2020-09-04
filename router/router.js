@@ -89,6 +89,23 @@ router.post('/search-book', async (req, res) => {
   res.render('search-result.ejs', { path: '/search-book', books: books });
 });
 
+router.get('/add-author', (req, res) => {
+  res.render('add-author.ejs', { path: '/add-author' });
+});
+
+router.post('/add-author', async (req, res) => {
+  const { authorLast, authorFirst, state, suburb, street, unit } = req.body;
+  try {
+    await database.addAuthor(
+      { authorFirst, authorLast },
+      { state, suburb, street, unit }
+    );
+    res.redirect('/books');
+  } catch (e) {
+    res.render('error.ejs', { path: '/error', message: e.message });
+  }
+});
+
 router.use('/', (req, res) => res.render('404.ejs', { path: '/404' }));
 
 module.exports = router;

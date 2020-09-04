@@ -111,6 +111,10 @@ const getAuthors = async () => {
   return await Author.find();
 };
 
+const updateAuthor = async (id, numBook) => {
+  await Author.updateOne({ _id: id }, { $set: { numBooks: +numBook } });
+};
+
 module.exports = {
   findBooks,
   addBook,
@@ -121,4 +125,5 @@ module.exports = {
   searchIsbnAuthor,
   addAuthor,
   getAuthors,
+  updateAuthor,
 };

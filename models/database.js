@@ -4,6 +4,13 @@ const Author = require('./author-model');
 
 const findBooks = () => Book.find();
 
+const findBookById = async id => {
+  const books = await Book.findById(id);
+
+  if (books.length === 0) throw new Error('Database error.');
+  return books[0];
+};
+
 const addBook = async (title, author, isbn, created, summary) => {
   // Get authors with same name
   const authors = await Author.where({
@@ -29,4 +36,4 @@ const addBook = async (title, author, isbn, created, summary) => {
   return saveResult;
 };
 
-module.exports = { findBooks, addBook };
+module.exports = { findBooks, addBook, findBookById };

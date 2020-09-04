@@ -18,7 +18,11 @@ const bookSchema = mongoose.Schema({
       message: 'ISBN must be 13 characters',
     },
   },
-  authorId: { type: mongoose.Schema.Types.ObjectId, required: true },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Author',
+  },
   created: {
     type: Date,
     default: Date.now,

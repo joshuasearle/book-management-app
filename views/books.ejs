@@ -16,10 +16,10 @@
           <th>Date</th>
           <th>Summary</th>
         </tr>
-        <% for ({title, author, isbn, created, summary} of books) { %>
+        <% for ({title, authorName, isbn, created, summary} of books) { %>
         <tr>
           <td><%= title %></td>
-          <td><%= author.name.firstName %> <%= author.name.lastName %></td>
+          <td><%= authorName.firstName %> <%= authorName.lastName %></td>
           <td><%= isbn %></td>
           <td><%= created.toDateString() %></td>
           <td><%= summary %></td>

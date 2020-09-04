@@ -39,13 +39,15 @@ router.get('/update-book/:id', async (req, res) => {
   const id = req.params.id;
   try {
     const book = await database.findBookById(id);
+    console.log(book);
     res.render('single-book-update.ejs', {
       path: '/update-book',
       book: {
         _id: book._id,
         title: book.title,
-        author: book.author,
+        authorName: book.authorName,
         created: util.convertDate(book.created),
+        summary: book.summary,
       },
     });
   } catch (e) {

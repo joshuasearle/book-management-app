@@ -12,7 +12,7 @@
         <% for (book of books) { %>
         <li>
           Title: <%= book.title %>, ISBN: <%= book.isbn %>, Author: <%=
-          book.author.name.firstName %> <%= book.author.name.lastName %>, Date:
+          book.authorName.firstName %> <%= book.authorName.lastName %>, Date:
           <%= book.date %>, Summary: <%= book.summary %>
         </li>
         <% } %>

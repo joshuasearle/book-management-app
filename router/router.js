@@ -1,13 +1,15 @@
 const express = require('express');
 
+const Book = require('../models/book.js');
+const Author = require('../models/author.js');
+
 const router = express.Router();
 
 router.get('/', (req, res) => res.render('index.ejs', { path: '/' }));
 
 router.get('/books', (req, res) => {
-  books.getBooks((err, result) => {
-    if (err) console.log(err);
-    res.render('books.ejs', { path: '/books', books: result });
+  Book.find().then(books => {
+    res.render('books.ejs', { path: '/books', books: books });
   });
 });
 

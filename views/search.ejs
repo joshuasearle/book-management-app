@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./shared/head') %>
+  <body>
+    <%- include('./shared/navbar') %>
+    <main class="container">
+      <h1>Enter ISBN or Author</h1>
+      <form class="add-form" method="POST" action="/search-book">
+        <div class="form-item">
+          <label for="isbn">ISBN</label>
+          <input type="number" name="isbn" id="isbn" />
+        </div>
+        <div class="form-item">
+          <label for="author">author</label>
+          <input type="text" name="author" id="author" />
+        </div>
+
+        <div class="form-item">
+          <button class="submit" type="submit">Search Books</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./shared/head') %>
+  <body>
+    <%- include('./shared/navbar') %>
+    <main class="container">
+      <h1>Search Results</h1>
+      <% if (books.length === 0) { %>
+      <p>No books match this query</p>
+      <%}%>
+      <ul>
+        <% for (book of books) { %>
+        <li>
+          Title: <%= book.title %>, ISBN: <%= book.isbn %>, Author: <%= book.author %>, Date: <%=
+          book.date %>, Summary: <%= book.summary %>
+        </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>

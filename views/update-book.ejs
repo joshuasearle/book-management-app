@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./shared/head') %>
+  <body>
+    <%- include('./shared/navbar') %>
+    <main class="container">
+      <h1>Select a Book to Update</h1>
+      <ul class="book-list">
+        <% for (book of books) { %>
+        <li>
+          <a class="book-link" href="/update-book/<%= book._id %>"
+            ><%= book.title %></a
+          >
+        </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>

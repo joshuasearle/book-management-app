@@ -5,23 +5,59 @@
     <%- include('./shared/navbar') %>
     <main class="container">
       <h1>Update Book</h1>
-      <form class="add-form" method="POST" action="/update-book/<%= book._id %>">
+      <form
+        class="add-form"
+        method="POST"
+        action="/update-book/<%= book._id %>"
+      >
         <div class="form-item">
           <label for="title">Title</label>
-          <input value="<%= book.title %>" type="text" name="title" id="title" />
+          <input
+            value="<%= book.title %>"
+            type="text"
+            name="title"
+            id="title"
+          />
         </div>
         <div class="form-item">
-          <label for="author">Author</label>
-          <input value="<%= book.author %>" type="text" name="author" id="author" />
+          <label for="authorFirst">Author First Name</label>
+          <input
+            value="<%= book.author.name.firstName %>"
+            type="text"
+            name="authorFirst"
+            id="authorFirst"
+          />
         </div>
-        <input hidden value="<%= book.isbn %>" type="number" name="isbn" id="isbn" />
         <div class="form-item">
-          <label for="date">Date of Publication</label>
-          <input value="<%= book.date %>" type="date" name="date" id="date" />
+          <label for="authorLast">Author Last Name</label>
+          <input
+            value="<%= book.author.name.lastName %>"
+            type="text"
+            name="authorLast"
+            id="authorLast"
+          />
+        </div>
+        <input
+          hidden
+          value="<%= book.isbn %>"
+          type="number"
+          name="isbn"
+          id="isbn"
+        />
+        <div class="form-item">
+          <label for="created">Date of Publication</label>
+          <input
+            value="<%= book.created %>"
+            type="date"
+            name="created"
+            id="created"
+          />
         </div>
         <div class="form-item">
           <label for="summary">Summary</label>
-          <textarea id="summary" name="summary" rows="3" cols="5"><%= book.summary %></textarea>
+          <textarea id="summary" name="summary" rows="3" cols="5">
+<%= book.summary %></textarea
+          >
         </div>
         <div class="form-item">
           <button class="submit" type="submit">Update Book</button>

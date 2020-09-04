@@ -5,8 +5,18 @@ const bookSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
+    validate: {
+      validator: title => title.length > 0,
+      message: 'Title cannot be empty',
+    },
   },
-  isbn: String,
+  isbn: {
+    type: String,
+    validate: {
+      validator: isbn => isbn.length === 13,
+      message: 'ISBN must be 13 characters',
+    },
+  },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Author',
@@ -15,6 +25,7 @@ const bookSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  summary: String,
 });
 
 module.exports = mongoose.model('Book', bookSchema);

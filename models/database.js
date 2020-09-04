@@ -29,6 +29,11 @@ const addBook = async (title, author, isbn, created, summary) => {
 
   if (authors.length === 0) throw new Error('Author does not exist.');
 
+  const incAuthor = Author.updateOne(
+    { _id: authors[0]._id },
+    { $inc: { numBooks: 1 } }
+  );
+
   // Create book fields
   const bookFields = {
     _id: new mongoose.Types.ObjectId(),
@@ -43,8 +48,9 @@ const addBook = async (title, author, isbn, created, summary) => {
 
   // Create book and save
   const newBook = new Book(bookFields);
-  const saveResult = await newBook.save();
-  return saveResult;
+
+  // Increment author numbooks in parallel
+  await Promise.all([newBook.save(), incAuthor]);
 };
 
 const updateBook = async (id, title, author, created, summary) => {

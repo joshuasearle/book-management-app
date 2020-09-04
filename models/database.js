@@ -78,6 +78,24 @@ const searchIsbnAuthor = async (isbn, author) => {
   });
 };
 
+const addAuthor = async (name, address) => {
+  const authorFields = {
+    _id: new mongoose.Types.ObjectId(),
+    name: {
+      firstName: name.authorFirst,
+    },
+    address: {},
+  };
+  if (name.authorLast) authorFields.name.lastName = name.authorLast;
+  if (address.state) authorFields.address.state = address.state;
+  if (address.suburb) authorFields.address.suburb = address.suburb;
+  if (address.street) authorFields.address.street = address.street;
+  if (address.unit) authorFields.address.unit = address.unit;
+
+  const author = new Author(authorFields);
+  return await author.save();
+};
+
 module.exports = {
   findBooks,
   addBook,
@@ -86,4 +104,5 @@ module.exports = {
   updateBook,
   removeBookByIsbn,
   searchIsbnAuthor,
+  addAuthor,
 };

@@ -26,5 +26,6 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
+  console.log('Database connected, server listening.');
   app.listen(8080);
 });

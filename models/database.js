@@ -26,7 +26,6 @@ const findAuthorByName = async (first, last) => {
 const addBook = async (title, author, isbn, created, summary) => {
   // Get authors with same name
   const authors = await findAuthorByName(author.first, author.last);
-
   if (authors.length === 0) throw new Error('Author does not exist.');
 
   const incAuthor = Author.updateOne(

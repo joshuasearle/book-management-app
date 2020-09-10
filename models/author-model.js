@@ -30,7 +30,7 @@ const authorSchema = mongoose.Schema({
   },
   numBooks: {
     type: Number,
-    default: 0,
+    default: 1,
     validate: {
       validator: numBooks => numBooks > 0 && numBooks <= 150,
       message: 'Num books must be in range [1, 150]',

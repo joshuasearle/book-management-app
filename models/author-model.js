@@ -26,14 +26,14 @@ const authorSchema = mongoose.Schema({
     },
     suburb: String,
     street: String,
-    unit: Number,
+    unit: String,
   },
   numBooks: {
     type: Number,
     default: 0,
     validate: {
-      validator: numBooks => numBooks > 0,
-      message: 'Author needs at least one book.',
+      validator: numBooks => numBooks > 0 && numBooks <= 150,
+      message: 'Num books must be in range [1, 150]',
     },
   },
 });

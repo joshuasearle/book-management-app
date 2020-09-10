@@ -29,14 +29,14 @@ const bookSchema = mongoose.Schema({
       required: true,
       validate: {
         validator: firstName => firstName.length >= 5 && firstName.length <= 15,
-        message: 'First name cannot be empty',
+        message: 'First name must have between 5, and 15 characters.',
       },
     },
     lastName: {
       type: String,
       validate: {
         validator: lastName => lastName.length >= 5 && lastName.length <= 15,
-        message: 'Last Name cannot be empty',
+        message: 'Last name must have between 5, and 15 characters.',
         required: true,
       },
     },

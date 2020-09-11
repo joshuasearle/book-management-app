@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./shared/head') %>
+  <body>
+    <%- include('./shared/navbar') %>
+    <main class="container">
+      <h1>Select a Date</h1>
+      <form class="add-form" method="POST" action="/search-date">
+        <div class="form-item">
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date" />
+        </div>
+        <div class="form-item">
+          <button class="submit" type="submit">Search Books</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

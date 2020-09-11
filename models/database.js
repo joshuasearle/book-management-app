@@ -114,6 +114,11 @@ const updateAuthor = async (id, numBook) => {
   await Author.updateOne({ _id: id }, { $set: { numBooks: +numBook } });
 };
 
+const booksAfter = async date => {
+  const books = await Book.find().where('created').gte(date);
+  return books;
+};
+
 module.exports = {
   findBooks,
   addBook,
@@ -125,4 +130,5 @@ module.exports = {
   addAuthor,
   getAuthors,
   updateAuthor,
+  booksAfter,
 };

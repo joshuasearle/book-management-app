@@ -125,6 +125,20 @@ router.post('/update-author', async (req, res) => {
   }
 });
 
+router.get('/search-date', (req, res) => {
+  res.render('afterdate.ejs', { path: '/search-date' });
+});
+
+router.post('/search-date', async (req, res) => {
+  const date = req.body.date;
+  const books = await database.booksAfter(date);
+  console.log(books);
+  res.render('message.ejs', {
+    path: '/message',
+    message: 'Thank you!',
+  });
+});
+
 router.use('/', (req, res) => res.render('404.ejs', { path: '/404' }));
 
 module.exports = router;
